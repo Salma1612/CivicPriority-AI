@@ -150,13 +150,13 @@ with tab2:
                 "incident_count",
                 "complaint_count",
                 "priority_band",
-             ],
+           ],
              color_continuous_scale="YlOrRd",
              zoom=8,
              height=560,
              map_style="open-street-map",
-          )
-          st.plotly_chart(fig_map, use_container_width=True)
+        )
+        st.plotly_chart(fig_map, use_container_width=True)
     else:
         st.warning("No locations match the selected filters.")
 
