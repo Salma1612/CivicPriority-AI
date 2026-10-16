@@ -65,6 +65,19 @@ _Add screenshots of the application in the sections below._
 - **Location insights:** Explore geographic patterns using the available location data.
 - **Model information:** Review dataset and model details.
 
+🔍 Sample Prediction – Real-World Civic Incident
+
+This example demonstrates how CivicPriority AI uses incident details and location context to estimate the time required to resolve a civic issue. The application displays a machine learning prediction alongside historical statistics for similar incidents, helping users understand the result in context.
+
+Scenario: A high-severity pothole on an arterial road, with no reported injuries and no nearby school or hospital.
+
+Estimated resolution time: 32.5 hours (approximately 1 day and 8.5 hours).
+
+The result is compared with historical resolution times for similar incidents to provide additional context.
+
+Application Output
+<img width="434" height="266" alt="image" src="https://github.com/user-attachments/assets/3cb1fe5a-015e-466c-b42d-e7c91d88b21d" />
+
 ## 🧠 Machine Learning
 
 The project includes a machine learning workflow for predicting incident resolution time.
@@ -162,6 +175,7 @@ To run the original application instead:
 ```bash
 streamlit run app.py
 ```
+
 
 ## ⚠️ Limitations
 
