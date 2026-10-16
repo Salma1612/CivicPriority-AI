@@ -1,0 +1,91 @@
+{
+  "project": "CivicPriority AI",
+  "task": "Incident resolution time prediction",
+  "model": "RandomForestRegressor (tuned, CV grid)",
+  "regressor_class": "RandomForestRegressor",
+  "target": "resolution_hours",
+  "target_unit": "hours",
+  "trained_at_utc": "2026-10-16T09:44:13+00:00",
+  "sklearn_version": "1.6.1",
+  "training_subset": "all incidents with a valid resolution_hours",
+  "evaluation": {
+    "method": "Random 80/20 split; model selection by 5-fold CV on training split only",
+    "test_size": 0.2,
+    "random_state": 42,
+    "training_records": 8000,
+    "testing_records": 2000,
+    "usable_records": 10000
+  },
+  "selected_model": {
+    "mae_hours": 16.4436,
+    "rmse_hours": 21.3988,
+    "cv_mae_hours": 17.4633,
+    "params": {
+      "max_depth": 4,
+      "min_samples_leaf": 50
+    }
+  },
+  "random_forest": {
+    "mae_hours": 17.2194,
+    "rmse_hours": 22.6113
+  },
+  "median_baseline": {
+    "mae_hours": 15.9634,
+    "rmse_hours": 21.941
+  },
+  "mean_baseline": {
+    "mae_hours": 16.4472,
+    "rmse_hours": 21.4101
+  },
+  "beats_median_baseline_mae": false,
+  "beats_baselines_rmse": true,
+  "cv_results": [
+    {
+      "model": "Median baseline (DummyRegressor)",
+      "cv_mae_hours": 16.9445,
+      "cv_mae_std": 0.6863,
+      "tuned": false
+    },
+    {
+      "model": "Ridge",
+      "cv_mae_hours": 17.5137,
+      "cv_mae_std": 0.6055,
+      "tuned": false
+    },
+    {
+      "model": "RandomForestRegressor (default, as in train_model.py)",
+      "cv_mae_hours": 18.2426,
+      "cv_mae_std": 0.5858,
+      "tuned": false
+    },
+    {
+      "model": "HistGradientBoostingRegressor",
+      "cv_mae_hours": 17.4989,
+      "cv_mae_std": 0.5839,
+      "tuned": false
+    },
+    {
+      "model": "RandomForestRegressor (tuned, CV grid)",
+      "cv_mae_hours": 17.4633,
+      "cv_mae_std": null,
+      "tuned": true,
+      "params": {
+        "max_depth": 4,
+        "min_samples_leaf": 50
+      }
+    }
+  ],
+  "features": [
+    "severity",
+    "incident_type",
+    "zone",
+    "road_type",
+    "road_condition",
+    "pedestrian_activity",
+    "injuries",
+    "population_density_per_km2",
+    "near_school",
+    "near_hospital"
+  ],
+  "note": "Dataset is synthetic; these metrics do not establish real-world performance."
+}
