@@ -15,7 +15,6 @@ def load_data():
     incidents = pd.read_csv(DATA_DIR / "incidents.csv", parse_dates=["timestamp"])
     complaints = pd.read_csv(DATA_DIR / "public_complaints.csv", parse_dates=["created_at"])
     return locations, incidents, complaints
-
 try:
     locations, incidents, complaints = load_data()
 except Exception as e:
@@ -138,12 +137,26 @@ with tab2:
     st.subheader("Map of locations")
     st.caption("Map points are synthetic coordinates provided with the educational dataset.")
     if not top.empty:
-        fig_map = px.scatter_mapbox(top, lat="latitude", lon="longitude", color="priority_score",
-            size="priority_score", hover_name="location_id",
-            hover_data=["zone", "road_condition", "incident_count", "complaint_count", "priority_band"],
-            color_continuous_scale="YlOrRd", zoom=8, height=560,
-            mapbox_style="open-street-map")
-        st.plotly_chart(fig_map, use_container_width=True)
+        fig_map = px.scatter_map(
+            top,
+            lat="latitude",
+            lon="longitude",
+            color="priority_score",
+            size="priority_score",
+            hover_name="location_id",
+            hover_data=[
+                "zone",
+                "road_condition",
+                "incident_count",
+                "complaint_count",
+                "priority_band",
+             ],
+             color_continuous_scale="YlOrRd",
+             zoom=8,
+             height=560,
+             map_style="open-street-map",
+          )
+          st.plotly_chart(fig_map, use_container_width=True)
     else:
         st.warning("No locations match the selected filters.")
 
