@@ -99,6 +99,7 @@ def main():
         "zone",
         "road_type",
         "road_condition",
+        "pedestrain_activity",
     ]
 
     numeric_features = [
@@ -106,7 +107,6 @@ def main():
         "population_density_per_km2",
         "near_school",
         "near_hospital",
-        "pedestrian_activity",
     ]
 
     feature_columns = categorical_features + numeric_features
